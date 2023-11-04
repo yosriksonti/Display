@@ -1,3 +1,10 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+app_customer:
+    path: /customer
+    controller: App\Controller\CustomerController::index
+app_customer_orders:
+    path: /customer/{customer_id}/orders
+    controller: App\Controller\CustomerController::orders
