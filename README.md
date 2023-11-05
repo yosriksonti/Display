@@ -37,7 +37,7 @@ default url is usually ```http://127.0.0.1:3000 ```
 
 ## Execute Tests
 ```sh
-npm run test
+npm run test a
 ```
 
 ## Realised by _Yosri Kossontini_
