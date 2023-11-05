@@ -12,7 +12,7 @@ test('renders menu', () => {
         city: "test-city",
         email: "test-email",
     };
-    render(<Customer customer={customer} setId={() => console.log("Clicked")} />);
+    render(<Customer customer={customer} />);
 
     const element = screen.getByTestId("customer-test");
     expect(element).toBeInTheDocument();

@@ -7,10 +7,10 @@ const Menu = () => {
     return (
         <div className="flex">
             <div className={"w-52 bg-dark-purple p-4  pt-8 relative duration-300"}>
-                <Customers setId={setId}/>
+                <Customers/>
             </div>
-            <div className="h-screen flex-1 p-4">
-                <Purchases id={id} />
+            <div className="h-screen bg-light-white flex-1 p-4">
+                <Purchases />
             </div>
         </div>
       );

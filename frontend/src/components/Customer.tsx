@@ -1,8 +1,10 @@
 import React from 'react';
-import { Customer as CustomerType } from '../types';
+import { connect } from 'react-redux';
+import { fetchPurchases } from '../redux';
+import { Customer as CustomerType, RootState } from '../types';
 interface Props {
     customer: CustomerType;
-    setId: Function;
+    fetchPurchases: Function;
 }
 const Customer = (props:Props) => {
 
@@ -22,10 +24,24 @@ const Customer = (props:Props) => {
                 </p>
                 </div>
                 <button className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" 
-                onClick={() => props.setId(props.customer.id)}>Purchases</button>
+                onClick={() => props.fetchPurchases(props.customer.id)}>Purchases</button>
             </div>
         </div>
     );
 }
+
+const mapStateToProps = (state:RootState) => {
+    return {
+        loading: state.customer.loading,
+        customers: state.customer.data,
+        error: state.customer.error
+    }
+}
+
+const mapDispatchToProps = (dispatch:Function) => {
+    return {
+        fetchPurchases: (id:number) => dispatch(fetchPurchases(id))
+    }
+}
  
-export default Customer;
+export default connect(mapStateToProps, mapDispatchToProps)(Customer);

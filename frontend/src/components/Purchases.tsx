@@ -8,19 +8,13 @@ interface Props {
     loading: boolean;
     purchases: PurchaseType[];
     error: string;
-    fetchPurchases: Function;
-    id: number;
 }
 
 const Purchases = (props:Props) => {
 
-    useEffect(() => {
-        if(props.id){
-            props.fetchPurchases(props.id)
-        }
-    }, [props.id])
+    
     return ( 
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-2">
             { props.loading 
                 ? ""
                 : props.purchases.map(purchase => {
@@ -45,7 +39,7 @@ const mapStateToProps = (state:RootState) => {
 
 const mapDispatchToProps = (dispatch:Function) => {
     return {
-        fetchPurchases: (id:number) => dispatch(fetchPurchases(id))
+
     }
 }
  

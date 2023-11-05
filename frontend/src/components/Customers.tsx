@@ -9,7 +9,6 @@ interface Props {
     customers: CustomerType[];
     error: string;
     fetchCustomers: Function;
-    setId: Function;
 }
 
 const Customers = (props:Props) => {
@@ -25,7 +24,7 @@ const Customers = (props:Props) => {
                 ? "Loading..."
                 : props.customers.map((customer:CustomerType) => {
                     return (
-                            <Customer customer={customer} key={customer.id} setId={props.setId}/>
+                            <Customer customer={customer} key={customer.id} />
                     )
                   })
             }
