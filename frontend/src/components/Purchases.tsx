@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Purchase from '../components/Purchase';
 import { connect } from 'react-redux';
 import { fetchPurchases } from '../redux';
-import { useParams, useNavigate } from 'react-router-dom';
 import { Purchase as PurchaseType, RootState } from '../types';
 
 interface Props {
@@ -10,26 +9,24 @@ interface Props {
     purchases: PurchaseType[];
     error: string;
     fetchPurchases: Function;
+    id: number;
 }
 
 const Purchases = (props:Props) => {
-    const navigate = useNavigate();
-    const {id} = useParams();
 
     useEffect(() => {
-            props.fetchPurchases(id)
-    }, [id])
-    console.log(props.purchases)
+        if(props.id){
+            props.fetchPurchases(props.id)
+        }
+    }, [props.id])
     return ( 
-        <div>
-            <button className="btn" onClick={() => navigate('/')} style={{float:"left"}}>Return</button>
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-2">
             { props.loading 
-                ? "Loading..."
+                ? ""
                 : props.purchases.map(purchase => {
                     return (
-                        <div>
+                        <div key={purchase.purchase_identifier}>
                             <Purchase purchase={purchase}></Purchase>
-                            <hr></hr>
                         </div>
                     )
                 })

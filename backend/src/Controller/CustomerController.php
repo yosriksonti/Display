@@ -41,6 +41,7 @@ class CustomerController extends AbstractController
                 'product_id' => $order->getProductId(),
                 'quantity' => $order->getQuantity(),
                 'price' => $order->getPrice(),
+                'currency' => $order->getCurrency(),
             ];
         }
         return $this->json($ordersArray);

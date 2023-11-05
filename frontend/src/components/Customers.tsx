@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
-import Customer from '../components/Customer';
+import Customer from './Customer';
 import { connect } from 'react-redux';
 import { fetchCustomers } from '../redux';
-import { useNavigate } from 'react-router-dom';
 import { Customer as CustomerType, RootState } from '../types';
 
 interface Props {
@@ -10,27 +9,23 @@ interface Props {
     customers: CustomerType[];
     error: string;
     fetchCustomers: Function;
+    setId: Function;
 }
 
 const Customers = (props:Props) => {
-    const navigate = useNavigate();
     useEffect(() => {
         if(props.customers.length==0 && !props.loading ){
             props.fetchCustomers()
         }
     }, [])
     return ( 
-        <div className="customers">
+        <div className="Customers">
             { 
             props.loading 
                 ? "Loading..."
                 : props.customers.map((customer:CustomerType) => {
                     return (
-                        <div>
-                            <Customer customer={customer}/>
-                            <button onClick={() => navigate(`/customer/${customer.id}/orders`)}>Purchases</button>      
-                            <hr></hr>            
-                        </div> 
+                            <Customer customer={customer} key={customer.id} setId={props.setId}/>
                     )
                   })
             }

@@ -20,6 +20,7 @@ export interface Purchase {
     product_id: number;
     quantity: number;
     price: number;
+    currency: string;
 }
 
 export interface CustomerState {
