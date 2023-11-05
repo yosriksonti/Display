@@ -1,8 +1,9 @@
 import {render, screen} from '@testing-library/react';
 import Customer from '../Customer';
+import { Customer as CustomerType } from '../../types';
 
 test('renders menu', () => {
-    const customer = {
+    const customer: CustomerType = {
         id: 1,
         title: "test-title",
         firstname: "test-firstname",
@@ -11,7 +12,7 @@ test('renders menu', () => {
         city: "test-city",
         email: "test-email",
     };
-    render(<Customer customer={customer} />);
+    render(<Customer customer={customer} setId={() => console.log("Clicked")} />);
 
     const element = screen.getByTestId("customer-test");
     expect(element).toBeInTheDocument();
