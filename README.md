@@ -40,5 +40,5 @@ default url is usually ```http://127.0.0.1:3000 ```
 npm run test a
 ```
 
-## Realised by _Yosri Kossontini_
+## Realized by _Yosri Kossontini_
 
