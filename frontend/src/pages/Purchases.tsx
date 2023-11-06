@@ -15,7 +15,7 @@ interface Props {
 const Purchases = (props:Props) => {
     const navigate = useNavigate();
     const {id} = useParams();
-
+    let total:number = 0;
     useEffect(() => {
             props.fetchPurchases(id)
     }, [id])
@@ -26,6 +26,7 @@ const Purchases = (props:Props) => {
             { props.loading 
                 ? ""
                 : props.purchases.map(purchase => {
+                    total += purchase.price;
                     return (
                         <div key={purchase.purchase_identifier}>
                             <Purchase purchase={purchase}></Purchase>
@@ -33,6 +34,16 @@ const Purchases = (props:Props) => {
                     )
                 })
             }
+            <div className="py-4 px-4 max-w-sm mx-auto bg-light-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-2 sm:space-x-6 m-4">
+                <div className="text-center space-y-2 sm:text-left">
+                    <div className="space-y-0.5">
+                        <p className="text-slate-500 font-medium">
+                        Total: {total}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <button onClick={() => navigate(-1)}
             className="bg-purple-500 hover:bg-purple-700 text-white text-sm font-semibold py-2 px-4 rounded-full">
                 Back
