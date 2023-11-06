@@ -7,7 +7,7 @@ interface Props {
 
 const Purchase = (props:Props) => {
     return ( 
-        <div className="py-4 px-4 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-2 sm:space-x-6 m-4">
+        <div data-testid="purchase-test" className="py-4 px-4 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-2 sm:space-x-6 m-4">
             <span className="bg-blue-100 text-blue-800 text-xs font-medium ml-2 px-2.5 py-0.5 rounded dark:text-blue-400 border border-blue-400 ">
                 {props.purchase.purchase_identifier}
             </span>
