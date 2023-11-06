@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPurchases } from '../redux';
 import { Customer as CustomerType, RootState } from '../types';
+import { useNavigate } from 'react-router-dom';
 interface Props {
     customer: CustomerType;
     fetchPurchases: Function;
 }
 const Customer = (props:Props) => {
-
+    const navigate = useNavigate();
     return ( 
         <div data-testid="customer-test" className="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 m-4">
             <div className="text-center space-y-2 sm:text-left">
@@ -24,7 +25,7 @@ const Customer = (props:Props) => {
                 </p>
                 </div>
                 <button className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" 
-                onClick={() => props.fetchPurchases(props.customer.id)}>Purchases</button>
+                onClick={() => navigate(`/customer/${props.customer.id}/orders`)}>Show Orders</button>
             </div>
         </div>
     );

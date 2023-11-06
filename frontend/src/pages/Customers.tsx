@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Customer from './Customer';
+import Customer from '../components/Customer';
 import { connect } from 'react-redux';
 import { fetchCustomers } from '../redux';
 import { Customer as CustomerType, RootState } from '../types';
@@ -18,7 +18,7 @@ const Customers = (props:Props) => {
         }
     }, [])
     return ( 
-        <div className="Customers">
+        <div className="bg-gradient-to-b from-indigo-500 p-4  pt-4 relative duration-300 h-screen">
             { 
             props.loading 
                 ? "Loading..."
